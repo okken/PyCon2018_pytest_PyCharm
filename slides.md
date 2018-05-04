@@ -10,6 +10,8 @@
 PyCharm and WebStorm Developer Advocate at JetBrains
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 What else should go here?
 </aside>
 
@@ -21,6 +23,8 @@ Co-Host of "Python Bytes" podcast<br>
 Lead Software Engineer at Rohde & Schwarz
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 Grab some pics for this
 </aside>
 
@@ -40,6 +44,8 @@ Grab some pics for this
 :::
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 Show of hands for these, please.
 Our goal with this talk is to try to move away from the top two thoughts and towards the rest.
 First up, we need something to test.
@@ -60,6 +66,8 @@ $ cards list
 ```
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 * We have a project that has some tests.
 * This is what it looks like.
 </aside>
@@ -96,6 +104,8 @@ $ source venv/bin/activate  # venv\Scripts\activate  (if Windows)
 ```
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 This isn't any kind of commentary towards venv and away from pipenv or anaconda or just raw Python.
 It's just what I use at the moment, so I usually include it instructions.
 </aside>
@@ -120,6 +130,8 @@ tests/cli/test_tracer_bullets.py ......            [100%]
 ```
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 Here's all of them so far.
 I've got api tests and cli tests, some similar, some different.
 </aside>
@@ -189,6 +201,8 @@ tests/cli/test_tracer_bullets.py::test_count PASSED  [100%]
 ======== 2 passed, 38 deselected in 0.17 seconds =========
 ```
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 oops, two tests match
 </aside>
 
@@ -223,6 +237,8 @@ Some other flags for picking which tests to run, and when to stop.
 ```
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 BTW: --help is a very interesting read.
 
 But really, command line? Who uses the command line anymore?
@@ -300,6 +316,8 @@ We can talk about it at the end, or just not worry about it.
 * Making the code something you are proud of
 
 <aside class="notes">
+*Notes: doesn't show up in slides*
+
 * Write effective tests
 * So you can quickly learn from your first implementation
 * So you can have as much time possible making you're code maintainable, pretty, elegant, efficient, secure, etc.
