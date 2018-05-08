@@ -188,7 +188,7 @@ Maybe start with Flask
 for those of you following along at home
 
 ```
-$ git clone https://github.com/okken/cards.git
+$ git clone -b pycon_2018 https://github.com/okken/cards.git
 $ cd cards
 $ python3.6 -m venv venv --prompt cards
 $ source venv/bin/activate  # venv\Scripts\activate  (if Windows)
