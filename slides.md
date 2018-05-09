@@ -2,18 +2,13 @@
 % Brian Okken & Paul Everitt
 % May 11, 2018
 
-
-# Who we are
+------------
 
 ## Paul Everitt
 
 PyCharm and WebStorm Developer Advocate at JetBrains
 
-<aside class="notes">
-*Notes:*
-
-What else should go here?
-</aside>
+------------
 
 ## Brian Okken
 
@@ -22,13 +17,9 @@ Host of "Test & Code" podcast<br>
 Co-Host of "Python Bytes" podcast<br>
 Lead Software Engineer at Rohde & Schwarz
 
-<aside class="notes">
-*Notes:*
+------------
 
-Grab some pics for this
-</aside>
-
-# TDD, pytest, and PyCharm
+## Visual Testing with PyCharm and pytest
 
 ------------
 
@@ -38,6 +29,7 @@ Grab some pics for this
 * why pytest
 * why PyCharm
 * demo as much as we can
+* have fun
 
 <aside class="notes">
 *Notes:*
@@ -52,6 +44,7 @@ time and allows me more time to play with the code under test.
 We really don't have enough time to cover all of these topics to the
 extent that they deserve. So my hope is that I can cover enough to get you
 excited about all three.
+</aside>
 
 ---------
 
@@ -92,19 +85,26 @@ and increase the joy.
 And to increase the odds of having a great day coding.
 </aside>
 
-# TDD
+---------
+
+## TDD crash course
+
+---------
 
 ## Design->Develop->Test
 
 doesn't work
 
-at least ... it's not fun
+and ... it's not fun
 
-## Test First
+---------
 
-~~Design->Develop->Test~~
+## Test -> Design & Develop
 
-Test -> Design & Develop
+way more fun
+
+includes do-overs
+
 
 <aside class="notes">
 *Notes:*
@@ -120,6 +120,8 @@ code faster most of the time, and slow down during parts we don't quite
 understand.
 </aside>
 
+---------
+
 ## TDD - traditional
 
 * <span style="color:red">Red: Write a failing test</span><br/>
@@ -132,6 +134,8 @@ understand.
 TDD is often summarized kinda like this. But for me, that doesn't
 relate to what I want to do very much. So I've got a different summary.
 </aside>
+
+---------
 
 ## TDD according to Brian
 
@@ -154,9 +158,31 @@ pytest and PyCharm are in alignment with this goal of giving you more time to
 learn and grow and more time to write code you are proud of.
 </aside>
 
-# Let's test something
+---------
 
 ## The cards project
+
+something to test
+
+------------------
+
+for those of you following along at home
+
+```
+$ git clone -b pycon_2018 https://github.com/okken/cards.git
+$ cd cards
+$ python3.6 -m venv venv --prompt cards
+$ source venv/bin/activate  # venv\Scripts\activate  (if Windows)
+(cards) $ pip install -r requirements_dev.txt
+```
+
+<aside class="notes">
+*Notes:*
+
+This is where you can get it.
+</aside>
+
+--------------
 
 ```
 $ cards add -o okken "Prepare for PyCon talk"
@@ -177,29 +203,10 @@ $ cards list
 <aside class="notes">
 *Notes:*
 
-This is what we are going to test.
-It's a todo list. So far, it has a CLI.
-Eventually, we'll add at least one web interface.
-Maybe start with Flask
-</aside>
-
-------------------
-
-for those of you following along at home
-
-```
-$ git clone -b pycon_2018 https://github.com/okken/cards.git
-$ cd cards
-$ python3.6 -m venv venv --prompt cards
-$ source venv/bin/activate  # venv\Scripts\activate  (if Windows)
-(cards) $ pip install -r requirements_dev.txt
-```
-
-<aside class="notes">
-*Notes:*
-
-This isn't any kind of commentary towards venv and away from pipenv or anaconda or just raw Python.
-It's just what I use at the moment, so I usually include it instructions.
+It's a todo list, with a command like interface.
+Did I mention I like working on the command line?
+Problem is, not everyone does.
+We'll get to that later.
 </aside>
 
 --------------
@@ -213,35 +220,32 @@ cards
 │       └── cli.py
 ├── tests
 │   ├── api
+│   │   ├── __init__.py
 │   │   ├── conftest.py
-│   │   ├── test_alac.py
-│   │   ├── test_list_filter.py
-│   │   └── test_tracer_bullets.py
+│   │   ├── test_tracer_bullets.py
+│   │   └── ....
 │   └── cli
-│       ├── __init__.py
+│       ├── __init__.py
 │       ├── conftest.py
 │       ├── test_alac.py
-│       ├── test_list_format.py
-│       └── test_tracer_bullets.py
+│       └── ...
 ```
 
 -------
 
-`pytest` in action
+## pytest
+
+-------
 
 ```
 (cards) $ pytest --cov=src
 ================== test session starts ===================
-plugins: cov-2.5.1
-collected 40 items
-
 tests/api/test_alac.py .                           [  2%]
 tests/api/test_list_filter.py ...................  [ 50%]
 tests/api/test_tracer_bullets.py .......           [ 67%]
 tests/cli/test_alac.py .                           [ 70%]
 tests/cli/test_list_format.py ......               [ 85%]
 tests/cli/test_tracer_bullets.py ......            [100%]
-
 ----------- coverage: -----------
 Name                    Stmts   Miss Branch BrPart  Cover
 ---------------------------------------------------------
@@ -250,7 +254,6 @@ src/cards/cardsdb.py       45      0     20      0   100%
 src/cards/cli.py           58      0     14      0   100%
 ---------------------------------------------------------
 TOTAL                     105      0     34      0   100%
-
 =============== 40 passed in 0.77 seconds ================
 ```
 
@@ -303,6 +306,7 @@ Whether it's debugging a particular test failure,
 or refactoring a subset of your code, you often don't need to run all
 of your tests.
 </aside>
+---------
 
 ## More development speedups
 
@@ -319,9 +323,23 @@ with pytest. We'll see fixtures and paramatrization in the demo.
 
 </aside>
 
-# PyCharm
+-------------
 
----------
+## CLI vs Visual Testing
+
+------------
+
+![](images/cli.png)
+
+------------
+
+## vs PyCharm
+
+------------
+
+![](images/visual_testing_2.png)
+
+-------------
 
 ## Some Setup
 
@@ -348,9 +366,9 @@ Check the default test runner
 
 ![](images/3_default_runner.png)
 
-## Demo
+---------
 
-## In the demo
+## Demo
 
 * run at different levels
 * see test durations
@@ -407,19 +425,20 @@ The code in cli.py is intentionally not well done,
 so we can talk about first draft, where to refactor, etc.
 </aside>
 
-# The END-ish
+----------
 
-## More info
+More info
 
-* PyCharm
-    * https://www.jetbrains.com/pycharm/
+* PyCharm: [jetbrains.com/pycharm/](https://www.jetbrains.com/pycharm/)
 * Python Testing with pytest
-    * https://pragprog.com/book/bopytest/python-testing-with-pytest
+    * [pragprog.com/book/bopytest](https://pragprog.com/book/bopytest/python-testing-with-pytest)
 * pytest
-    * https://docs.pytest.org
-    * https://stackoverflow.com/search?q=pytest
+    * [docs.pytest.org](https://docs.pytest.org/en/latest/)
+    * [stackoverflow.com/search?q=pytest](https://stackoverflow.com/search?q=pytest)
 * Lessons about testing and TDD from Kent Beck
-    * http://testandcode.com/23
-* booths
-* open space session
+    * [testandcode.com/23](http://testandcode.com/23)
+* Twitter
+    * @[brianokken](https://twitter.com/brianokken), @[testpodcast](https://twitter.com/testpodcast), [testandcode.com](http://testandcode.com)
+    * @[paulweveritt](https://twitter.com/@paulweveritt), @[pycharm](https://twitter.com/pycharm)
+
 
