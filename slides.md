@@ -4,12 +4,6 @@
 
 ------------
 
-## Paul Everitt
-
-PyCharm and WebStorm Developer Advocate at JetBrains
-
-------------
-
 ## Brian Okken
 
 Author of "Python Testing with pytest"<br>
@@ -19,13 +13,19 @@ Lead Software Engineer at Rohde & Schwarz
 
 ------------
 
+## Paul Everitt
+
+PyCharm and WebStorm Developer Advocate at JetBrains
+
+------------
+
 ## Visual Testing with PyCharm and pytest
 
 ------------
 
 ## a lot of ground to cover
 
-* TDD in 4 slides
+* TDD in 5 slides
 * why pytest
 * why PyCharm
 * demo as much as we can
@@ -37,13 +37,9 @@ Lead Software Engineer at Rohde & Schwarz
 I'm really excited to be here today, and have you here.
 
 Testing is a topic I'm passionate about. It's not becuase I love writing
-tests more than I love writing the code under test. I'm passionate about it
-becuase a thoughtful use of testing practices, frameworks, and tools saves me
-time and allows me more time to play with the code under test.
-
-We really don't have enough time to cover all of these topics to the
-extent that they deserve. So my hope is that I can cover enough to get you
-excited about all three.
+tests more than I love writing other code.
+It's because I believe a thoughtful use of testing practices, frameworks,
+and tools saves me time and allows me more time to play with the code.
 </aside>
 
 ---------
@@ -55,21 +51,24 @@ excited about all three.
 <aside class="notes">
 *Notes:*
 
-It's 1980-something, and I had a TRS-80 with one game, Labaryinth, that I quickly tired
-of. So I would type in listings from the backs of magazines.
+It's 1980-something, and I had a TRS-80 computer from Radio Shack.
+I one game cartrige, Labaryinth, which I quickly became tired of.
 
-My favorite was Lunar Lander. It took me a long time to type that in and I
-didn't understand it before I played it.
+At the time, there were magazines dedicated to the TRS-80 that contained code
+listings in basic for you to type in yourself. Some of them were games.
 
-But after I mastered the game itself, I played with the code.
+My favorite was Lunar Lander.
 
-I would muck with the amount of fuel I was allowed, change how effective
-thrust was, change the gravity calculation, disable collisions, etc.
+After I mastered the game itself, I played with the code.
 
-None of my changes made the game more fun. Most made it rather unplayable.
+I changed how effective the thrust was, modified the gravity calculation,
+tried to disable collisions, etc. And then played the game to see what the
+affect was.
+
+None of my changes made the game more fun. Most made the game unplayable.
 But I was trying things out without fear. Just me and the code.
 
-I want to have fun coding.
+I like to have fun while coding.
 
 For me, automated testing, especially using pytest and PyCharm, are a way to
 release my geek. To let my inner hacker run wild. To play with code, to try new
@@ -79,16 +78,29 @@ And to make software that I am proud of.
 
 I want you to have that.
 
-All of what we are talking about is to try to minimize the pain of programming
+All of what we are going to talk about is to try to minimize the pain of programming
 and increase the joy.
 
-And to increase the odds of having a great day coding.
+To increase the odds of having a great day coding.
 </aside>
 
 ---------
 
 ## TDD crash course
 
+<aside class="notes">
+*Notes:*
+
+I want to do a 5 slide crash course on Test Driven Development.
+
+At the end of the slide deck I have a link to a podcast episode that describes
+TDD in more detail. So don't worry if you don't quite get it in 5 slides.
+
+The reason I want to cover TDD is because the topics of automated testing and
+TDD often are discussed together.
+Even though you can do automated testing without TDD, I think they are better
+together.
+</aside>
 ---------
 
 ## Design->Develop->Test
@@ -97,6 +109,15 @@ doesn't work
 
 and ... it's not fun
 
+<aside class="notes">
+*Notes:*
+
+Testing only at the end doesn't work.
+If tests reveal problems, then they are teaching you about your design or your
+implementation.
+If tests can help you learn about design and implementation, then starting them
+earlier makes sense. So we can apply that learning earlier and make fewer mistakes.
+</aside>
 ---------
 
 ## Test -> Design & Develop
@@ -109,38 +130,46 @@ includes do-overs
 <aside class="notes">
 *Notes:*
 
-TDD started it's life as Test First Programming, with a simple idea.
+So let's start testing right away, and have the tests help us all along the way.
+
 It's like many school text books with questions at the end of each chapter.
-They are written backwards. If you are pressed for time, read the questions
-first, then when you run across something pertaining to those questions, you
-can slow down and read carefully.
+If you are pressed for time (which I always was because I read slowly), then
+read the questions first, before you read the chapter.
+You can read faster, and when you run across something pertaining to those
+questions, you can slow down and read carefully.
 
 When developing software, if we can develop our questions first, then we can
 code faster most of the time, and slow down during parts we don't quite
 understand.
+
+Of course, when we are just starting a project, we don't know all the questions
+to ask, or the tests to write, so we start small and iterate through the project.
 </aside>
 
 ---------
 
 ## TDD - traditional
 
-* <span style="color:red">Red: Write a failing test</span><br/>
-* <span style="color:green">Green: Make it pass</span><br/>
+* <span style="color:red">Red</span>: Write a failing test
+* <span style="color:green">Green</span>: Make it pass
 * Refactor: Clean up your code<br/>
 
 <aside class="notes">
 *Notes:*
 
-TDD is often summarized kinda like this. But for me, that doesn't
-relate to what I want to do very much. So I've got a different summary.
+TDD is often summarized kinda like this.
+But for me, that doesn't really help me know what to do.
+How do I write a failing test? Which tests should I write?
+How many?
+So I've got a different summary.
 </aside>
 
 ---------
 
 ## TDD according to Brian
 
-* <span style="color:red">Red: Learn what it's like to use your code</span>
-* <span style="color:green">Green: Learn one way to implement the code</span>
+* <span style="color:red">Red</span>: Learn what it's like to use your code
+* <span style="color:green">Green</span>: Learn one way to implement the code
 * Refactor: Make code you are proud of
 
 (and don't forget to refactory your tests, too)
@@ -148,16 +177,46 @@ relate to what I want to do very much. So I've got a different summary.
 <aside class="notes">
 *Notes:*
 
-You will be more qualified to solve any coding problem after you've solved
-it at least once. TDD is about incorporating automated testing into your
-development day to help you get through defining what your code is supposed
-to do and your first draft as fast as possible so that you have time to reflect
-and rewrite parts of it as you gain experience.
+this is my version.
+Write tests that help you learn how the software will be used.
+Ask questions about your code, design, API, ...
+Then figure out one way to implement it. A rough draft.
+Then go back and make the code maintainable, modular, whatever you think makes
+code good code.
 
-pytest and PyCharm are in alignment with this goal of giving you more time to
-learn and grow and more time to write code you are proud of.
+You will be more qualified to solve any coding problem after you've solved
+it at least once.
+
+With tests in place to make sure you don't muck things up to much, you have the
+freadom to refactor small pieces up to big changes.
+
+Refactoring sometimes is a non-step. Somethimes it's just cleaning up variable names
+Sometimes it's bigger. Just because it's drawn as a third of the circle doesn't
+mean it always takes a third of the time.
+
+As you iterate, building up tests, building up code, you gain experience
+necessary to make larger changes and decisions.
+
 </aside>
 
+---------
+
+## Testing During Development
+
+![](images/cycle.jpg)
+
+<aside class="notes">
+*Notes:*
+
+The small circles indicate roughly times where you are running a test suite of some kind.
+The time it takes to write the tests, and the time it takes to run the tests, all subtract
+from the time we get to wite either the first draft of the code or refactorings.
+
+This is the suite spot (pun intended) where pytest and PyCharm help us out.
+pytest helps us spend less time writing tests, and PyCharm helps us run tests
+quickly while coding.
+
+</aside>
 ---------
 
 ## The cards project
@@ -203,10 +262,11 @@ $ cards list
 <aside class="notes">
 *Notes:*
 
-It's a todo list, with a command like interface.
-Did I mention I like working on the command line?
-Problem is, not everyone does.
-We'll get to that later.
+I've been using the cards project to explore testing concepts on an open source
+project for the Test & Code podcast.
+It's a todo list, with a command line interface.
+Eventually, it we'll add a web interface and a REST API to explore testing even
+further.
 </aside>
 
 --------------
@@ -230,6 +290,12 @@ cards
 │       ├── test_alac.py
 │       └── ...
 ```
+
+<aside class="notes">
+*Notes:*
+
+This is the structure mostly that pertains to the testing.
+</aside>
 
 -------
 
@@ -260,9 +326,9 @@ TOTAL                     105      0     34      0   100%
 <aside class="notes">
 *Notes:*
 
-Here's all of them so far.
-I've got api tests and cli tests, some similar, some different.
-I'm using a coverage plugin to run a coverage report while testing.
+You can just type pytest to run the tests.
+This runs all of the tests.
+But here I'm using the pytest-cov plugin to run coverage during testing.
 </aside>
 
 
@@ -280,6 +346,13 @@ $ pytest tests/cli/test_tracer_bullets.py
 $ # one test function
 $ pytest tests/cli/test_tracer_bullets.py::test_count
 ```
+
+<aside class="notes">
+*Notes:*
+
+Like we talked about with the TDD cycle, sometimes you don't need to run
+all of the tests. pytest has many ways to run a subset.
+</aside>
 
 -------
 
@@ -300,11 +373,15 @@ Some other ways to run a subset of tests
 <aside class="notes">
 *Notes:*
 
-One way that pytest saves you time is by allowing you to just run the
-tests that will help you get past the next bit of work.
-Whether it's debugging a particular test failure,
-or refactoring a subset of your code, you often don't need to run all
-of your tests.
+Here are some more ways to run a subset of the tests.
+Markers are especially useful if related tests are in different parts of the
+directory structure.
+
+When writing your first draft code to go from red to green, --lf -x in combination
+are brilliant. That just runs the tests that failed previously and stops on the
+first failure.
+
+When developing tests, the --new-first saves time.
 </aside>
 ---------
 
@@ -318,9 +395,8 @@ of your tests.
 <aside class="notes">
 *Notes:*
 
-Not to go in depth too much, but here's a taste of what you can utilize
-with pytest. We'll see fixtures and paramatrization in the demo.
-
+Fixtures, parametrization, and plugins help even further in speeding up both
+test writing time and test running time.
 </aside>
 
 -------------
@@ -331,13 +407,28 @@ with pytest. We'll see fixtures and paramatrization in the demo.
 
 ![](images/cli.png)
 
+
+<aside class="notes">
+*Notes:*
+
+</aside>
+
 ------------
 
 ## vs PyCharm
 
 ------------
 
-![](images/visual_testing_2.png)
+![](images/pycharm.png)
+
+------------
+
+![](images/pycharm_annotated.png)
+
+<aside class="notes">
+*Notes:*
+
+</aside>
 
 -------------
 
@@ -385,9 +476,12 @@ Check the default test runner
 I think we should run through the first few items with working tests
 
 * run all the tests
+    * note the test durations in the results
 * run just the cli tests, from the project tree
 * run tracer bullets, from run window
 * double click on one of the tests to bring up the test code
+    * choose tests/api/test_list_filter
+    * because it's a cool use of parametrization
 * run that test from the code window gutter icon
 * run the whole file from right click in whitespace
 * run all the tests again
@@ -398,10 +492,16 @@ I think we should run through the first few items with working tests
 Then add a test
 * at the bottom of tests/cli/test_tracer_bullets.py is a
 test that needs uncommented
+# -----------------------------
+# -- a possible first draft
+# -----------------------------
+# def test_get(db_empty, cards_cli):
+# ...
+
 * uncomment, the test should auto run.
 * highight failure: "Error: No such command "get"."
-* we can point out the use of fixtures and parametrization with this
-test
+* we can point out the use of fixtures with this test
+* if you want, we can show the fixtures in conftest.py
 
 Open src/cards/cli.py
 * uncomment get_card()
@@ -412,17 +512,24 @@ Open src/cards/cli.py
 * restart the test in debug
 * step through a few lines of get_card()
 * point out that 'format' is 'simple'.
+    * good point to open up REPL and talk about that
 * higlight the default value to see what it is
 * complete the test run
 * add --format packed to test function call
 * re-run the tests
 * everything should pass now.
+* The second draft is good to talk about pushing test setup into
+  a fixture and creating parametrizations.
+* We can look at the cli code for get and discuss places to fix it up.
+    * moving common formatting of individual elements into a helper
+    function maybe.
 
-"now that it's green we can commit, and maybe clean up the code."
+* A discussion point of the --format packed flag is that it was added
+to make testing easier. But I made the decision that it was fine
+to be in the public CLI becuase some other tool built on the API might find
+it helpful for testing itself.
 
-The fix for the code is to add a --format packed to the test.
-The code in cli.py is intentionally not well done,
-so we can talk about first draft, where to refactor, etc.
+
 </aside>
 
 ----------
